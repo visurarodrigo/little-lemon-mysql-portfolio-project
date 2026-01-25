@@ -6,6 +6,8 @@ A comprehensive MySQL database project showcasing restaurant management system d
 
 The Little Lemon database simulates a complete restaurant booking and menu management system, featuring normalized relational tables, integrity constraints, and business logic implementation through stored procedures and views.
 
+**Background**: This project was developed after completing the **"Database Structures and Management with MySQL"** certification by **Meta**, applying the concepts and best practices learned throughout the course.
+
 ## 🛠️ Technology Stack
 
 - **Database**: MySQL 8.x
