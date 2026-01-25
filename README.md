@@ -46,11 +46,51 @@ The diagram showcases:
 
 ## 🚀 Installation & Setup
 
-### Prerequisites
-- MySQL Server 8.x or higher
-- MySQL Workbench (recommended) or MySQL CLI
+### Option 1: Run in Docker (Recommended - 100% Reproducible)
 
-### Setup Instructions
+**Prerequisites**: Docker and Docker Compose installed
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/visurarodrigo/little-lemon-mysql-portfolio-project.git
+   cd little-lemon-mysql-portfolio-project
+   ```
+
+2. **Start the MySQL container**
+   ```bash
+   docker-compose up -d
+   ```
+   This will:
+   - Pull MySQL 8.0 image
+   - Create database `little_lemon_portfolio`
+   - Automatically run all SQL scripts in order
+   - Expose MySQL on `localhost:3306`
+
+3. **Connect to the database**
+   ```bash
+   docker exec -it little-lemon-mysql mysql -u lemon_user -plemon_pass little_lemon_portfolio
+   ```
+
+   Or use MySQL Workbench/any MySQL client with:
+   - **Host**: `localhost`
+   - **Port**: `3306`
+   - **Username**: `lemon_user`
+   - **Password**: `lemon_pass`
+   - **Database**: `little_lemon_portfolio`
+
+4. **Stop the container when done**
+   ```bash
+   docker-compose down
+   ```
+
+   To remove all data and start fresh:
+   ```bash
+   docker-compose down -v
+   ```
+
+### Option 2: Local MySQL Installation
+
+**Prerequisites**: MySQL Server 8.x or higher, MySQL Workbench (recommended) or MySQL CLI
 
 1. **Clone the repository**
    ```bash
