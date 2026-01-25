@@ -33,6 +33,17 @@ The Little Lemon database simulates a complete restaurant booking and menu manag
 - Normalized structure (3NF) to minimize data redundancy
 - Indexed fields for optimized query performance
 
+### Entity Relationship Diagram
+
+The following ER diagram illustrates the database structure and relationships between tables:
+
+![ER Diagram](ER%20Diagram.png)
+
+The diagram showcases:
+- **One-to-Many relationships** between customers and bookings/delivery addresses
+- **Foreign key constraints** maintaining referential integrity
+- **Normalized table structure** for efficient data management
+
 ## 🚀 Installation & Setup
 
 ### Prerequisites
