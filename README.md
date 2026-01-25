@@ -10,7 +10,7 @@ The Little Lemon database simulates a complete restaurant booking and menu manag
 
 ## 🛠️ Technology Stack
 
-- **Database**: MySQL 8.x
+- **Database**: MySQL 8.0 (tested on MySQL 8.0.x)
 - **Development Tool**: MySQL Workbench
 - **Version Control**: Git
 
@@ -126,7 +126,43 @@ The diagram showcases:
 ✅ **Stored Procedures**: Parameterized routines for reusable logic  
 ✅ **String Functions**: CONCAT for formatted output  
 
-## 📸 Query Results & Output Previews
+### 🗂️ Views & Procedures
+
+**Views:**
+- `bookings_view` - Filtered booking records for dates before 2021-11-13 with more than 3 guests
+
+**Stored Procedures:**
+- `GetBookingsData(InputDate)` - Retrieve all bookings for a specific date, ordered by time
+
+## � Business Questions Solved
+
+This project demonstrates practical SQL solutions to real-world restaurant management challenges:
+
+1. **"Which bookings fall within a specific date range?"**  
+   → Date range filtering with BETWEEN operator | [sql/03_core_queries.sql](sql/03_core_queries.sql)
+
+2. **"Which customers have reservations on a particular date?"**  
+   → JOIN operation linking customers and bookings | [sql/03_core_queries.sql](sql/03_core_queries.sql)
+
+3. **"Which dates have the most bookings?"**  
+   → Aggregation with GROUP BY and COUNT | [sql/03_core_queries.sql](sql/03_core_queries.sql)
+
+4. **"How do I update menu item pricing?"**  
+   → UPDATE statement for data modifications | [sql/04_structure_and_updates.sql](sql/04_structure_and_updates.sql)
+
+5. **"How can I add new delivery addresses for customers?"**  
+   → INSERT operations with foreign key relationships | [sql/04_structure_and_updates.sql](sql/04_structure_and_updates.sql)
+
+6. **"How do I add new columns to track menu item availability?"**  
+   → ALTER TABLE for schema modifications | [sql/04_structure_and_updates.sql](sql/04_structure_and_updates.sql)
+
+7. **"Which customers made bookings on a specific date?"**  
+   → Subquery filtering customer records | [sql/05_subqueries_and_views.sql](sql/05_subqueries_and_views.sql)
+
+8. **"How can I retrieve bookings by date using a stored procedure?"**  
+   → `GetBookingsData(InputDate)` parameterized procedure | [sql/06_procedures_and_strings.sql](sql/06_procedures_and_strings.sql)
+
+## �📸 Query Results & Output Previews
 
 ### Task 1: Date Range Filtering (BETWEEN)
 Retrieve bookings within a specific date range using BETWEEN operator.
@@ -138,7 +174,7 @@ Retrieve bookings within a specific date range using BETWEEN operator.
 ### Task 2: Customer Bookings (JOIN)
 Join customers and bookings tables to show customer names with their reservation IDs.
 
-![JOIN Query Result](outputs/task2_join.png.jpg)
+![JOIN Query Result](outputs/task2_join.jpg)
 
 ---
 
