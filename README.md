@@ -37,7 +37,7 @@ The Little Lemon database simulates a complete restaurant booking and menu manag
 
 The following ER diagram illustrates the database structure and relationships between tables:
 
-![ER Diagram](ER%20Diagram.png)
+![ER Diagram](ER%20Diagram.jpg)
 
 The diagram showcases:
 - **One-to-Many relationships** between customers and bookings/delivery addresses
