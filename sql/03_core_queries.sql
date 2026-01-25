@@ -1,4 +1,4 @@
--- bookings between 2021-11-11 and 2021-11-13
+-- task 1
 
 USE little_lemon_portfolio;
 
@@ -7,7 +7,7 @@ FROM bookings
 WHERE booking_date BETWEEN '2021-11-11' AND '2021-11-13'
 ORDER BY booking_date, booking_time;
 
--- customer full names + booking IDs on 2021-11-11
+-- task 2
 
 SELECT
   c.full_name,
@@ -18,7 +18,7 @@ JOIN bookings b
 WHERE b.booking_date = '2021-11-11'
 ORDER BY b.booking_id;
 
--- show booking_date + total bookings per date
+-- task 3
 
 SELECT
   booking_date,
