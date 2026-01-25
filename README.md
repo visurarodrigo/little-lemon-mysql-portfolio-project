@@ -1,3 +1,187 @@
-# Little Lemon MySQL Portfolio Project
+# Little Lemon MySQL Portfolio Project 🍋
 
-MySQL portfolio project based on Little Lemon restaurant database
+A comprehensive MySQL database project showcasing restaurant management system design and implementation. This project demonstrates advanced SQL capabilities including schema design, data manipulation, complex queries, stored procedures, and database optimization techniques.
+
+## 📋 Project Overview
+
+The Little Lemon database simulates a complete restaurant booking and menu management system, featuring normalized relational tables, integrity constraints, and business logic implementation through stored procedures and views.
+
+## 🛠️ Technology Stack
+
+- **Database**: MySQL 8.x
+- **Development Tool**: MySQL Workbench
+- **Version Control**: Git
+
+## 📊 Database Architecture
+
+**Database Name**: `little_lemon_portfolio`
+
+### Schema Design
+
+| Table | Description |
+|-------|-------------|
+| `customers` | Customer information and contact details |
+| `dining_tables` | Restaurant seating capacity and table management |
+| `bookings` | Reservation records with customer and table references |
+| `menu_items` | Menu offerings with pricing and ingredient details |
+| `delivery_addresses` | Customer delivery locations |
+
+**Key Features**:
+- Primary and Foreign Key constraints ensuring referential integrity
+- Normalized structure (3NF) to minimize data redundancy
+- Indexed fields for optimized query performance
+
+## 🚀 Installation & Setup
+
+### Prerequisites
+- MySQL Server 8.x or higher
+- MySQL Workbench (recommended) or MySQL CLI
+
+### Setup Instructions
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/visurarodrigo/little-lemon-mysql-portfolio-project.git
+   cd little-lemon-mysql-portfolio-project
+   ```
+
+2. **Execute SQL scripts in order**
+   ```sql
+   source sql/00_setup.sql;       -- Create database
+   source sql/01_schema.sql;      -- Create tables and constraints
+   source sql/02_seed.sql;        -- Insert sample data
+   source sql/03_core_queries.sql; -- Basic queries
+   ```
+
+   *Optional advanced scripts (if available)*:
+   - `sql/04_structure_and_updates.sql`
+   - `sql/05_subqueries_and_views.sql`
+   - `sql/06_procedures_and_strings.sql`
+
+## 💡 Features Demonstrated
+
+### Core SQL Competencies
+✅ **Data Filtering**: WHERE clauses with BETWEEN operators  
+✅ **Table Joins**: INNER JOIN for multi-table queries  
+✅ **Aggregation**: GROUP BY with COUNT functions  
+✅ **Data Integrity**: Primary Keys, Foreign Keys, and UNIQUE constraints  
+✅ **Schema Modification**: ALTER TABLE operations  
+
+### Advanced Techniques
+✅ **Subqueries**: Nested SELECT statements for complex filtering  
+✅ **Views**: Virtual tables for simplified data access  
+✅ **Stored Procedures**: Parameterized routines for reusable logic  
+✅ **String Functions**: CONCAT for formatted output  
+
+## 📸 Query Results & Output Previews
+
+### Task 1: Date Range Filtering (BETWEEN)
+Retrieve bookings within a specific date range using BETWEEN operator.
+
+![BETWEEN Query Result](outputs/task1_between.jpg)
+
+---
+
+### Task 2: Customer Bookings (JOIN)
+Join customers and bookings tables to show customer names with their reservation IDs.
+
+![JOIN Query Result](outputs/task2_join.png.jpg)
+
+---
+
+### Task 3: Booking Statistics (GROUP BY)
+Aggregate bookings by date to analyze reservation patterns.
+
+![GROUP BY Query Result](outputs/task3_groupby.jpg)
+
+---
+
+### Task 4: Data Updates
+Update specific records in the database (Kabasa example).
+
+![UPDATE Query Result](outputs/task4_update_kabasa.jpg)
+
+---
+
+### Task 5: Delivery Address Management
+Query and display customer delivery addresses with column structure.
+
+![Delivery Addresses](outputs/task5_delivery_addresses.jpg)
+![Delivery Columns](outputs/task5_delivery_columns.jpg)
+
+---
+
+### Task 6: Schema Modifications (ALTER TABLE)
+Add or modify columns in the menu_items table.
+
+![ALTER TABLE Result](outputs/task6_alter_menu_items.jpg)
+
+---
+
+### Task 7: Subquery Filtering
+Use subqueries to filter customers based on specific criteria.
+
+![Subquery Result](outputs/task7_subquery_customers.jpg)
+
+---
+
+### Task 8: Bookings View Creation
+Create a view for simplified booking queries.
+
+![VIEW Creation Result](outputs/task8_bookings_view.jpg)
+
+---
+
+### Task 9: Stored Procedure Execution
+Call stored procedures with parameters for dynamic queries.
+
+![Stored Procedure Result](outputs/task9_procedure_call.jpg)
+
+---
+
+### Task 10: Comprehensive Booking Details
+Display formatted booking information with string concatenation.
+
+![Booking Details Result](outputs/task10_booking_details.jpg)
+
+---
+
+## 📁 Project Structure
+
+```
+little-lemon-mysql-portfolio-project/
+├── README.md
+├── sql/
+│   ├── 00_setup.sql              # Database creation
+│   ├── 01_schema.sql             # Table definitions
+│   ├── 02_seed.sql               # Sample data
+│   └── 03_core_queries.sql       # Query examples
+└── outputs/                       # Query result screenshots
+    ├── task1_between.jpg
+    ├── task2_join.png.jpg
+    ├── task3_groupby.jpg
+    └── ...
+```
+
+## 🎯 Learning Outcomes
+
+This project demonstrates proficiency in:
+- Relational database design and normalization
+- SQL query optimization and best practices
+- Data integrity management through constraints
+- Complex query construction with multiple tables
+- Stored procedure development for business logic
+- View creation for data abstraction
+
+## 📝 License
+
+This project is open source and available for educational purposes.
+
+## 👤 Author
+
+**Visurarodrigo**
+- GitHub: [@visurarodrigo](https://github.com/visurarodrigo)
+
+---
+
+*This project was created as a portfolio demonstration of MySQL database development skills.*
