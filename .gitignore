@@ -1,0 +1,42 @@
+# Environment variables (credentials)
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+out/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Optional screenshots folder
+screenshots/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.sql~
+
+# Node modules (for API layer)
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn.lock
+
+# Python (for future API layer)
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
