@@ -1,36 +1,37 @@
-# Little Lemon MySQL Project
+# Little Lemon MySQL Portfolio Project
 
-This is an undergraduate-level restaurant database project built with MySQL and a simple Node.js API.
+Little Lemon is a restaurant management database project built with MySQL and exposed through a Node.js and Express REST API. The repository demonstrates schema design, data seeding, query patterns, and API-based data access in a single, reproducible local setup.
 
-## Project Scope
+## Highlights
 
-- Create and manage a relational database
-- Run SQL tasks from basic to intermediate level
-- Practice views and stored procedures
-- Connect the database to a basic REST API
+- Normalized relational schema for core restaurant operations
+- SQL scripts for setup, schema creation, seed data, and query exercises
+- REST API for customers, bookings, and menu resources
+- Local environment configuration via `.env`
 
-## Tech Stack
+## Technology Stack
 
-- MySQL 8
+- MySQL 8+
 - Node.js + Express
-- mysql2 + dotenv
+- mysql2
+- dotenv
 
-## Current Project Structure
+## Project Structure
 
 ```text
-src/                 API code
-sql/                 SQL scripts (run in order)
+src/                 API source code
+sql/                 SQL scripts (execute in sequence)
 outputs/             Query result screenshots
-README.md            Main guide
-QUICKSTART.md        Fast setup guide
+README.md            Project overview and setup
+QUICKSTART.md        Fast start instructions
 API_DOCUMENTATION.md API endpoint details
-CONTRIBUTING.md      Contribution notes
+CONTRIBUTING.md      Contribution guidelines
 ```
 
-## Database
+## Database Overview
 
-- Database name: `little_lemon_portfolio`
-- Main tables:
+- Database: `little_lemon_portfolio`
+- Core tables:
 	- `customers`
 	- `dining_tables`
 	- `bookings`
@@ -41,16 +42,16 @@ ER diagram:
 
 ![ER Diagram](ER%20Diagram.jpg)
 
-## Setup (Local MySQL)
+## Local Setup
 
-1. Clone repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/visurarodrigo/little-lemon-mysql-portfolio-project.git
 cd little-lemon-mysql-portfolio-project
 ```
 
-2. Create `.env`
+### 2. Create environment file
 
 Linux/macOS:
 
@@ -64,9 +65,11 @@ Windows PowerShell:
 Copy-Item .env.example .env
 ```
 
-3. Update `.env` with your local MySQL credentials.
+Update `.env` with your local MySQL credentials.
 
-4. Run scripts in order:
+### 3. Initialize database
+
+Run scripts in this order:
 
 ```sql
 source sql/00_setup.sql;
@@ -75,28 +78,33 @@ source sql/02_seed.sql;
 source sql/03_core_queries.sql;
 ```
 
-Optional additional tasks:
+Optional advanced SQL scripts:
 
 - `sql/04_structure_and_updates.sql`
 - `sql/05_subqueries_and_views.sql`
 - `sql/06_procedures_and_strings.sql`
 
-## Run API
+### 4. Start the API
 
 ```bash
 npm install
 npm run dev
 ```
 
-- Base URL: `http://localhost:3001/api`
-- Health: `GET /health`
-- Main endpoints: `/customers`, `/bookings`, `/menu`
+## API Access
 
-See `API_DOCUMENTATION.md` for full endpoint examples.
+- Base URL: `http://localhost:3001/api`
+- Health endpoint: `GET /health`
+- Main resources:
+	- `/customers`
+	- `/bookings`
+	- `/menu`
+
+For complete request and response examples, see `API_DOCUMENTATION.md`.
 
 ## Environment Variables
 
-Copy `.env.example` and set values:
+Required values in `.env`:
 
 ```env
 MYSQL_HOST=localhost
@@ -108,17 +116,19 @@ API_PORT=3001
 NODE_ENV=development
 ```
 
-## Learning Outcomes
+## SQL Coverage
 
-- SQL filtering, joins, and grouping
-- Table updates and schema changes
-- Subqueries, views, and procedures
-- Building a beginner-friendly API over MySQL
+The SQL scripts include:
 
-## Output Screenshots
+- Filtering, joins, and aggregations
+- Data updates and schema changes
+- Subqueries and views
+- Stored procedures and string handling
 
-All SQL task screenshots are in `outputs/`.
+## Artifacts
+
+Query output screenshots are available in `outputs/`.
 
 ## License
 
-MIT License. See `LICENSE`.
+This project is licensed under the MIT License. See `LICENSE` for details.

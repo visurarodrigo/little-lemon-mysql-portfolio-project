@@ -1,23 +1,24 @@
-# Quick Start Guide (Local MySQL)
+# Quick Start Guide
 
-Use this guide to run the project without Docker.
+This guide shows the shortest path to running the project locally.
 
-## Prerequisites
+## Requirements
 
-- MySQL 8+ installed locally
-- Node.js 14+ and npm
+- MySQL 8 or newer
+- Node.js 14 or newer
+- npm
 - Git
 
-## Setup Steps
+## Steps
 
-1. Clone repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/visurarodrigo/little-lemon-mysql-portfolio-project.git
 cd little-lemon-mysql-portfolio-project
 ```
 
-2. Create `.env`
+### 2. Create your environment file
 
 Linux/macOS:
 
@@ -31,9 +32,11 @@ Windows PowerShell:
 Copy-Item .env.example .env
 ```
 
-3. Update `.env` with your local MySQL username and password.
+Open `.env` and set your local MySQL username and password.
 
-4. Open MySQL and run scripts in order:
+### 3. Run the SQL scripts
+
+Open MySQL and run these files in order:
 
 ```sql
 source sql/00_setup.sql;
@@ -42,33 +45,37 @@ source sql/02_seed.sql;
 source sql/03_core_queries.sql;
 ```
 
-5. Install API packages and start server
+Optional practice scripts:
+
+- `sql/04_structure_and_updates.sql`
+- `sql/05_subqueries_and_views.sql`
+- `sql/06_procedures_and_strings.sql`
+
+### 4. Start the API
 
 ```bash
 npm install
 npm run dev
 ```
 
-API should run at: `http://localhost:3001`
+The API should run at `http://localhost:3001`.
 
-## Verify API
+## Test the API
 
 ```bash
 curl.exe http://localhost:3001/health
 curl.exe http://localhost:3001/api/customers
 ```
 
-## Common Test Request
-
-Create a customer (PowerShell):
+Create a customer test request:
 
 ```powershell
 Invoke-WebRequest -Uri http://localhost:3001/api/customers -Method POST -ContentType "application/json" -Body '{"full_name":"Nimal Perera","phone":"+94701234567"}' -UseBasicParsing | Select-Object -ExpandProperty Content
 ```
 
-## Stop API
+## Stop the API
 
-Press `Ctrl + C` in the terminal where API is running.
+Press `Ctrl + C` in the terminal where the server is running.
 
 ## Documentation
 

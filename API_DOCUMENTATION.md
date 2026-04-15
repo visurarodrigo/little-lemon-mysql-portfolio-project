@@ -1,187 +1,124 @@
 # Little Lemon API Documentation
 
+This document describes the REST API used by the Little Lemon MySQL project.
+
 ## Overview
 
-This API is a simple student-friendly backend for the Little Lemon database project. It is built with Node.js and Express and connects to MySQL.
+The API is built with Node.js and Express. It connects to the local MySQL database and provides basic CRUD operations for customers, bookings, and menu items.
 
-## Quick Start
+## Base URL
 
-```bash
-# 1. Install dependencies
-npm install
-
-# 2. Ensure .env is configured
-# Copy from .env.example if needed
-
-# 3. Ensure local MySQL is running and credentials are set in .env
-
-# 4. Start API server
-npm run dev
-```
-
-Server runs at: `http://localhost:3001`
-
-## Project Layout
-
-```
-src/server.js                      # Main server file
-├── src/api/
-│   ├── db/connection.js          # MySQL connection
-│   ├── middleware/
-│   │   └── errorHandler.js       # Global error handling
-│   ├── controllers/              # Business logic
-│   │   ├── customersController.js
-│   │   ├── bookingsController.js
-│   │   └── menuController.js
-│   └── routes/                   # HTTP route handlers
-│       ├── customers.js
-│       ├── bookings.js
-│       └── menu.js
-```
-
-## Endpoints
-
-### Base URL
-```
+```text
 http://localhost:3001/api
 ```
 
-### 1. Customers Resource
+## Running the API
 
-#### List all customers
+1. Make sure MySQL is running locally.
+2. Configure `.env` with your local database credentials.
+3. Install dependencies and start the server.
+
+```bash
+npm install
+npm run dev
+```
+
+Health check:
+
+```text
+GET /health
+```
+
+## Project Layout
+
+```text
+src/server.js
+src/api/db/connection.js
+src/api/middleware/errorHandler.js
+src/api/controllers/
+src/api/routes/
+```
+
+## General Notes
+
+- All requests and responses use JSON.
+- The API returns a 404 response for routes that do not exist.
+- Database errors are handled in the error middleware.
+
+## Resources
+
+### 1. Customers
+
+Base path:
+
+```text
+/customers
+```
+
+#### Get all customers
+
 ```http
 GET /customers
 ```
 
-**Response:**
-```json
-[
-  {
-    "customer_id": 1,
-    "full_name": "Keshan Silva",
-    "phone": "+94701234567"
-  },
-  {
-    "customer_id": 2,
-    "full_name": "Dishan Mendis",
-    "phone": "+94765432109"
-  }
-]
-```
+#### Get one customer
 
-#### Get single customer
 ```http
 GET /customers/:id
 ```
 
-**Response:**
-```json
-{
-  "customer_id": 1,
-  "full_name": "Keshan Silva",
-  "phone": "+94701234567"
-}
-```
+#### Create a customer
 
-#### Create customer
 ```http
 POST /customers
 Content-Type: application/json
 
 {
-  "full_name": "Shanika Perera",
-  "phone": "+94721234567"
+  "full_name": "Nimal Perera",
+  "phone": "+94701234567"
 }
 ```
 
-**Response (201):**
-```json
-{
-  "customer_id": 3,
-  "full_name": "Shanika Perera",
-  "phone": "+94721234567"
-}
-```
+#### Update a customer
 
-#### Update customer
 ```http
 PUT /customers/:id
 Content-Type: application/json
 
 {
-  "full_name": "Shanika Perera Updated",
-  "phone": "+94729999999"
+  "full_name": "Nimal Perera",
+  "phone": "+94709999999"
 }
 ```
 
-**Response:**
-```json
-{
-  "message": "Customer updated successfully"
-}
-```
+#### Delete a customer
 
-#### Delete customer
 ```http
 DELETE /customers/:id
 ```
 
-**Response:**
-```json
-{
-  "message": "Customer deleted successfully"
-}
+### 2. Bookings
+
+Base path:
+
+```text
+/bookings
 ```
 
----
+#### Get all bookings
 
-### 2. Bookings Resource
-
-#### List all bookings
 ```http
 GET /bookings
 ```
 
-**Response:**
-```json
-[
-  {
-    "booking_id": 1,
-    "booking_date": "2024-12-25",
-    "booking_time": "19:00:00",
-    "table_number": 5,
-    "number_of_guests": 4,
-    "customer_id": 1,
-    "full_name": "Keshan Silva",
-    "phone": "+94701234567",
-    "seating_capacity": 4,
-    "created_at": "2024-11-01T10:30:00.000Z"
-  }
-]
-```
+#### Get one booking
 
-#### Get single booking
 ```http
 GET /bookings/:id
 ```
 
-**Response:**
-```json
-{
-  "booking_id": 1,
-  "booking_date": "2024-12-25",
-  "booking_time": "19:00:00",
-  "table_number": 5,
-  "number_of_guests": 4,
-  "customer_id": 1,
-  "full_name": "Keshan Silva",
-  "phone": "+94701234567",
-  "seating_capacity": 4,
-  "created_at": "2024-11-01T10:30:00.000Z"
-}
-```
+#### Create a booking
 
-#### Create booking
 ```http
 POST /bookings
 Content-Type: application/json
@@ -195,19 +132,8 @@ Content-Type: application/json
 }
 ```
 
-**Response (201):**
-```json
-{
-  "booking_id": 2,
-  "booking_date": "2024-12-25",
-  "booking_time": "19:00",
-  "table_number": 5,
-  "number_of_guests": 4,
-  "customer_id": 1
-}
-```
+#### Update a booking
 
-#### Update booking
 ```http
 PUT /bookings/:id
 Content-Type: application/json
@@ -218,203 +144,149 @@ Content-Type: application/json
 }
 ```
 
-**Response:**
-```json
-{
-  "message": "Booking updated successfully"
-}
-```
+#### Delete a booking
 
-#### Cancel booking
 ```http
 DELETE /bookings/:id
 ```
 
-**Response:**
-```json
-{
-  "message": "Booking deleted successfully"
-}
+### 3. Menu
+
+Base path:
+
+```text
+/menu
 ```
 
----
+#### Get all menu items
 
-### 3. Menu Resource
-
-#### List all menu items
 ```http
 GET /menu
 ```
 
-**Response:**
-```json
-[
-  {
-    "item_id": 1,
-    "item_name": "Lamprais",
-    "category": "Main",
-    "cost": "850.00",
-    "ingredients": "Rice, meat, curry leaves"
-  },
-  {
-    "item_id": 2,
-    "item_name": "Kottu Roti",
-    "category": "Main",
-    "cost": "550.00",
-    "ingredients": "Roti, meat, vegetables"
-  }
-]
-```
+#### Filter menu items by category
 
-#### Filter by category
 ```http
-GET /menu?category=Starter
+GET /menu?category=Main
 ```
 
-**Valid categories:** Starter, Main, Dessert, Drink
+Valid categories:
 
-#### Get single menu item
+- Starter
+- Main
+- Dessert
+- Drink
+
+#### Get one menu item
+
 ```http
 GET /menu/:id
 ```
 
-#### Add menu item
+#### Create a menu item
+
 ```http
 POST /menu
 Content-Type: application/json
 
 {
-  "item_name": "Deviled Dishes",
+  "item_name": "Lamprais",
   "category": "Main",
-  "cost": 650.00,
-  "ingredients": "Chili, onions, Sri Lankan spices"
+  "cost": 850.00,
+  "ingredients": "Rice, meat, curry leaves"
 }
 ```
 
-**Response (201):**
-```json
-{
-  "item_id": 3,
-  "item_name": "Deviled Dishes",
-  "category": "Main",
-  "cost": 650.00,
-  "ingredients": "Chili, onions, Sri Lankan spices"
-}
-```
+#### Update a menu item
 
-#### Update menu item
 ```http
 PUT /menu/:id
 Content-Type: application/json
 
 {
-  "cost": 700.00
+  "cost": 900.00
 }
 ```
 
-#### Delete menu item
+#### Delete a menu item
+
 ```http
 DELETE /menu/:id
 ```
 
----
+## Example Responses
 
-## HTTP Status Codes
-
-| Code | Meaning |
-|------|---------|
-| 200 | OK - Request succeeded |
-| 201 | Created - Resource created successfully |
-| 400 | Bad Request - Invalid input |
-| 404 | Not Found - Resource doesn't exist |
-| 409 | Conflict - Duplicate entry (e.g., phone number) |
-| 500 | Internal Server Error |
-
-## Error Handling
-
-The API returns consistent error messages:
+### Success
 
 ```json
 {
-  "error": "Description of the error"
+  "message": "Customer updated successfully"
 }
 ```
 
-**Common errors:**
+### Error
 
-- `"Customer not found"` - Customer ID doesn't exist
-- `"Duplicate entry - resource already exists"` - Phone number already registered
-- `"Foreign key constraint violation"` - Referenced resource doesn't exist
-- `"All booking fields are required"` - Missing required fields
-- `"Invalid category. Must be one of: Starter, Main, Dessert, Drink"` - Invalid menu category
-
-## Testing with cURL
-
-### Create a customer
-```bash
-curl -X POST http://localhost:3001/api/customers \
-  -H "Content-Type: application/json" \
-  -d '{"full_name": "Test User", "phone": "+94770000000"}'
+```json
+{
+  "error": "Route not found"
+}
 ```
 
-### List all bookings
+Common error responses:
+
+- `400` - Invalid or missing input
+- `404` - Resource not found
+- `409` - Duplicate entry
+- `500` - Server error
+
+## Example API Calls
+
+### List customers
+
 ```bash
-curl http://localhost:3001/api/bookings
+curl.exe http://localhost:3001/api/customers
 ```
 
-### Get menu items by category
-```bash
-curl "http://localhost:3001/api/menu?category=Main"
+### Add a customer
+
+```powershell
+Invoke-WebRequest -Uri http://localhost:3001/api/customers -Method POST -ContentType "application/json" -Body '{"full_name":"Nimal Perera","phone":"+94701234567"}' -UseBasicParsing | Select-Object -ExpandProperty Content
 ```
 
-### Update a booking
+### List bookings
+
 ```bash
-curl -X PUT http://localhost:3001/api/bookings/1 \
-  -H "Content-Type: application/json" \
-  -d '{"number_of_guests": 6}'
+curl.exe http://localhost:3001/api/bookings
 ```
 
-## Testing with Postman (or similar)
+### List menu items
 
-1. Import the API endpoints into Postman
-2. Create a collection for each resource
-3. Set up authentication if needed
-4. Test each CRUD operation
+```bash
+curl.exe http://localhost:3001/api/menu
+```
 
-## Environment Configuration
+## Environment Variables
 
-Configure API behavior via `.env`:
+Set these values in `.env`:
 
 ```env
-# Database
 MYSQL_HOST=localhost
 MYSQL_PORT=3306
-MYSQL_USER=lemon_user
-MYSQL_PASSWORD=lemon_pass
+MYSQL_USER=your_mysql_user
+MYSQL_PASSWORD=your_mysql_password
 MYSQL_DATABASE=little_lemon_portfolio
-
-# API
 API_PORT=3001
-NODE_ENV=development|production
+NODE_ENV=development
 ```
 
-## Performance Considerations
+## Testing
 
-- **Connection Pooling**: The API uses a MySQL connection pool (10 concurrent connections)
-- **Query Optimization**: JOIN queries for related data retrieval
-- **Error Recovery**: Automatic connection release on errors
+Recommended checks:
 
-## Future Enhancements
-
-- [ ] Authentication & Authorization (JWT)
-- [ ] Request validation (Joi/Yup)
-- [ ] API rate limiting
-- [ ] Pagination for large result sets
-- [ ] Advanced filtering and sorting
-- [ ] API documentation with Swagger/OpenAPI
-- [ ] Unit and integration tests
-- [ ] GraphQL alternative
+1. Start the API with `npm run dev`.
+2. Open `http://localhost:3001/health`.
+3. Test each endpoint with cURL or Postman.
 
 ## Support
 
-For issues or questions, refer to the main README or create an issue in the repository.
+For setup instructions, see [README.md](README.md). For a shorter checklist, see [QUICKSTART.md](QUICKSTART.md).
