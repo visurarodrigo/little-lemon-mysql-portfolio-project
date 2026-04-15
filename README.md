@@ -1,6 +1,6 @@
 # Little Lemon MySQL Portfolio Project
 
-Little Lemon is a restaurant management database project built with MySQL and exposed through a Node.js and Express REST API. The repository demonstrates schema design, data seeding, query patterns, and API-based data access in a single, reproducible local setup.
+Little Lemon is a restaurant management database project built with MySQL and exposed through a Node.js and Express REST API. The repository demonstrates schema design, data seeding, query patterns, and API-based data access in a local setup.
 
 ## Highlights
 
@@ -22,10 +22,13 @@ Little Lemon is a restaurant management database project built with MySQL and ex
 src/                 API source code
 sql/                 SQL scripts (execute in sequence)
 outputs/             Query result screenshots
+BUSINESS_PROBLEMS.md  SQL tasks mapped to business questions
 README.md            Project overview and setup
 QUICKSTART.md        Fast start instructions
 API_DOCUMENTATION.md API endpoint details
 CONTRIBUTING.md      Contribution guidelines
+src/README.md        Source code notes
+sql/README.md        SQL script guide
 ```
 
 ## Database Overview
@@ -125,9 +128,22 @@ The SQL scripts include:
 - Subqueries and views
 - Stored procedures and string handling
 
+## Business Problems
+
+The SQL work is also documented as business questions with screenshot previews in [BUSINESS_PROBLEMS.md](BUSINESS_PROBLEMS.md).
+
 ## Artifacts
 
 Query output screenshots are available in `outputs/`.
+
+## Supporting Documentation
+
+- [QUICKSTART.md](QUICKSTART.md)
+- [API_DOCUMENTATION.md](API_DOCUMENTATION.md)
+- [BUSINESS_PROBLEMS.md](BUSINESS_PROBLEMS.md)
+- [src/README.md](src/README.md)
+- [sql/README.md](sql/README.md)
+- [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License
 
