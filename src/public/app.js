@@ -2,7 +2,11 @@ const els = {
   refreshBtn: document.getElementById('refreshBtn'),
   healthDot: document.getElementById('healthDot'),
   bookingForm: document.getElementById('bookingForm'),
-  formMessage: document.getElementById('formMessage'),
+  customerForm: document.getElementById('customerForm'),
+  menuForm: document.getElementById('menuForm'),
+  bookingMessage: document.getElementById('bookingMessage'),
+  customerMessage: document.getElementById('customerMessage'),
+  menuMessage: document.getElementById('menuMessage'),
   customerSelect: document.getElementById('customer_id'),
   bookingsBody: document.getElementById('bookingsBody'),
   customersList: document.getElementById('customersList'),
@@ -14,10 +18,16 @@ const els = {
 
 const fmtMoney = (value) => `LKR ${Number(value).toFixed(2)}`;
 
-function setMessage(text, type = 'ok') {
-  els.formMessage.textContent = text;
-  els.formMessage.style.color =
+function setMessage(element, text, type = 'ok') {
+  element.textContent = text;
+  element.style.color =
     type === 'ok' ? '#2f8f5b' : type === 'warn' ? '#b85e00' : '#b31a2a';
+}
+
+function clearMessages() {
+  setMessage(els.bookingMessage, '');
+  setMessage(els.customerMessage, '');
+  setMessage(els.menuMessage, '');
 }
 
 function normalizeTime(t) {
@@ -119,7 +129,7 @@ async function checkHealth() {
 
 async function refreshAll() {
   try {
-    setMessage('');
+    clearMessages();
     const [customers, bookings, menu] = await Promise.all([
       api('/api/customers'),
       api('/api/bookings'),
@@ -129,7 +139,7 @@ async function refreshAll() {
     renderBookings(bookings);
     renderMenu(menu);
   } catch (err) {
-    setMessage(err.message, 'error');
+    setMessage(els.bookingMessage, err.message, 'error');
   }
 }
 
@@ -149,15 +159,59 @@ els.bookingForm.addEventListener('submit', async (e) => {
       method: 'POST',
       body: JSON.stringify(payload)
     });
-    setMessage('Booking created successfully.', 'ok');
+    setMessage(els.bookingMessage, 'Booking created successfully.', 'ok');
     els.bookingForm.reset();
     await refreshAll();
   } catch (err) {
     if (err.message.toLowerCase().includes('already booked')) {
-      setMessage(err.message, 'warn');
+      setMessage(els.bookingMessage, err.message, 'warn');
       return;
     }
-    setMessage(err.message, 'error');
+    setMessage(els.bookingMessage, err.message, 'error');
+  }
+});
+
+els.customerForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const payload = {
+    full_name: document.getElementById('customer_full_name').value.trim(),
+    phone: document.getElementById('customer_phone').value.trim()
+  };
+
+  try {
+    await api('/api/customers', {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    });
+    setMessage(els.customerMessage, 'Customer created successfully.', 'ok');
+    els.customerForm.reset();
+    await refreshAll();
+  } catch (err) {
+    setMessage(els.customerMessage, err.message, 'error');
+  }
+});
+
+els.menuForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const payload = {
+    item_name: document.getElementById('menu_item_name').value.trim(),
+    category: document.getElementById('menu_category').value,
+    cost: Number(document.getElementById('menu_cost').value),
+    ingredients: document.getElementById('menu_ingredients').value.trim() || null
+  };
+
+  try {
+    await api('/api/menu', {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    });
+    setMessage(els.menuMessage, 'Menu item created successfully.', 'ok');
+    els.menuForm.reset();
+    await refreshAll();
+  } catch (err) {
+    setMessage(els.menuMessage, err.message, 'error');
   }
 });
 

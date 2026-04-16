@@ -21,7 +21,7 @@
     </header>
 
     <main class="grid">
-      <section class="card card-form reveal">
+      <section class="card card-create-booking reveal">
         <h2>Create Booking</h2>
         <form id="bookingForm" class="form-grid">
           <label>
@@ -53,10 +53,10 @@
 
           <button type="submit" class="btn btn-success wide">Save Booking</button>
         </form>
-        <p id="formMessage" class="msg"></p>
+        <p id="bookingMessage" class="msg"></p>
       </section>
 
-      <section class="card reveal">
+      <section class="card card-bookings reveal">
         <div class="card-head">
           <h2>Bookings</h2>
           <span id="bookingsCount" class="badge">0</span>
@@ -80,7 +80,58 @@
         </div>
       </section>
 
-      <section class="card reveal">
+      <section class="card card-add-customer reveal">
+        <h2>Add Customer</h2>
+        <form id="customerForm" class="form-grid">
+          <label class="wide">
+            Full Name
+            <input type="text" id="customer_full_name" placeholder="e.g. Nimal Perera" required />
+          </label>
+
+          <label class="wide">
+            Phone
+            <input type="text" id="customer_phone" placeholder="e.g. 0712345678" required />
+          </label>
+
+          <button type="submit" class="btn btn-success wide">Save Customer</button>
+        </form>
+        <p id="customerMessage" class="msg"></p>
+      </section>
+
+      <section class="card card-add-item reveal">
+        <h2>Add Menu Item</h2>
+        <form id="menuForm" class="form-grid">
+          <label>
+            Item Name
+            <input type="text" id="menu_item_name" placeholder="e.g. Lamprais" required />
+          </label>
+
+          <label>
+            Category
+            <select id="menu_category" required>
+              <option value="Starter">Starter</option>
+              <option value="Main">Main</option>
+              <option value="Dessert">Dessert</option>
+              <option value="Drink">Drink</option>
+            </select>
+          </label>
+
+          <label>
+            Cost (LKR)
+            <input type="number" id="menu_cost" min="0" step="0.01" required />
+          </label>
+
+          <label>
+            Ingredients
+            <input type="text" id="menu_ingredients" placeholder="Optional" />
+          </label>
+
+          <button type="submit" class="btn btn-success wide">Save Menu Item</button>
+        </form>
+        <p id="menuMessage" class="msg"></p>
+      </section>
+
+      <section class="card card-customers reveal">
         <div class="card-head">
           <h2>Customers</h2>
           <span id="customersCount" class="badge">0</span>
@@ -88,7 +139,7 @@
         <ul id="customersList" class="list"></ul>
       </section>
 
-      <section class="card reveal">
+      <section class="card card-menu reveal">
         <div class="card-head">
           <h2>Menu</h2>
           <span id="menuCount" class="badge">0</span>

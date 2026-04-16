@@ -110,16 +110,24 @@ h1 {
   box-shadow: 0 10px 24px rgba(27, 22, 12, 0.08);
 }
 
-.card-form {
+.card-create-booking {
   grid-column: span 6;
 }
 
-.grid > section:nth-child(2) {
+.card-bookings {
   grid-column: span 10;
 }
 
-.grid > section:nth-child(3),
-.grid > section:nth-child(4) {
+.card-add-customer {
+  grid-column: span 6;
+}
+
+.card-add-item {
+  grid-column: span 10;
+}
+
+.card-customers,
+.card-menu {
   grid-column: span 8;
 }
 
@@ -207,6 +215,10 @@ select:focus {
   font-weight: 700;
 }
 
+.card-add-item .form-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .table-wrap {
   max-height: min(48vh, 560px);
   overflow: auto;
@@ -288,6 +300,14 @@ th {
   animation-delay: 0.24s;
 }
 
+.grid .reveal:nth-child(5) {
+  animation-delay: 0.32s;
+}
+
+.grid .reveal:nth-child(6) {
+  animation-delay: 0.4s;
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -311,10 +331,12 @@ th {
 }
 
 @media (max-width: 900px) {
-  .card-form,
-  .grid > section:nth-child(2),
-  .grid > section:nth-child(3),
-  .grid > section:nth-child(4) {
+  .card-create-booking,
+  .card-bookings,
+  .card-add-customer,
+  .card-add-item,
+  .card-customers,
+  .card-menu {
     grid-column: 1 / -1;
   }
 }
