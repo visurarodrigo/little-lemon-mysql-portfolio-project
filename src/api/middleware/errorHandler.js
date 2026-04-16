@@ -19,6 +19,13 @@ const errorHandler = (err, req, res, next) => {
     return res.status(404).json({ error: 'Referenced resource not found' });
   }
 
+  // Trigger SIGNAL from SQLSTATE '45000' (e.g., duplicate booking rule)
+  if (err.code === 'ER_SIGNAL_EXCEPTION' || err.sqlState === '45000') {
+    return res.status(409).json({
+      error: err.sqlMessage || err.message || 'Database business rule violation'
+    });
+  }
+
   // Default error
   res.status(err.status || 500).json({
     error: err.message || 'Internal server error'

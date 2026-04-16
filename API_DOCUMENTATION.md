@@ -132,6 +132,12 @@ Content-Type: application/json
 }
 ```
 
+Possible responses:
+
+- `201 Created` - Booking created successfully.
+- `400 Bad Request` - Missing required fields or invalid references.
+- `409 Conflict` - Duplicate booking for the same date, time, and table number.
+
 #### Update a booking
 
 ```http
@@ -149,6 +155,10 @@ Content-Type: application/json
 ```http
 DELETE /bookings/:id
 ```
+
+Notes:
+
+- Deleting a booking also writes an audit row via database trigger.
 
 ### 3. Menu
 
