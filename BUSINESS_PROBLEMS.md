@@ -104,6 +104,46 @@ This task uses `CONCAT` to combine booking data into a readable text format. It 
 
 ![Booking details text output](outputs/task10_booking_details.jpg)
 
+## 11. How many bookings does a customer have?
+
+This task creates and calls a function that returns total bookings for a selected customer ID. It supports quick customer-level booking analysis.
+
+**SQL file:** `sql/07_functions_and_triggers.sql`
+
+**Preview:**
+
+![Customer booking count function](outputs/task11_customer_booking_count.jpg)
+
+## 12. How many bookings were made on a specific date?
+
+This task creates and calls a function that returns booking count for a selected date. It helps with daily booking trend checks.
+
+**SQL file:** `sql/07_functions_and_triggers.sql`
+
+**Preview:**
+
+![Bookings by date function](outputs/task12_booking_bydate.jpg)
+
+## 13. How can deleted bookings be tracked for audit purposes?
+
+This task uses an `AFTER DELETE` trigger to write removed booking rows into the `booking_audit` table. It preserves a record of deleted bookings for review.
+
+**SQL file:** `sql/07_functions_and_triggers.sql`
+
+**Preview:**
+
+![Delete booking trigger audit](outputs/task13_tigger_delete_booking.jpg)
+
+## 14. How can duplicate bookings be prevented automatically?
+
+This task uses a `BEFORE INSERT` trigger to block duplicate bookings for the same date, time, and table number. It enforces booking consistency at the database level.
+
+**SQL file:** `sql/07_functions_and_triggers.sql`
+
+**Preview:**
+
+![Duplicate booking prevention trigger](outputs/task14_tigger_duplicate_booking.jpg)
+
 ## Summary
 
 These SQL tasks cover the main business needs of the restaurant project:
@@ -113,4 +153,6 @@ These SQL tasks cover the main business needs of the restaurant project:
 - Menu updates and schema changes
 - Delivery address tracking
 - Reusable queries with views and procedures
+- User-defined functions for reusable counts
+- Triggers for data audit and business rule enforcement
 - Formatted output for reporting

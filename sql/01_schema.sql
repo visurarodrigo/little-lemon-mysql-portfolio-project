@@ -8,7 +8,7 @@ CREATE TABLE customers (
   phone       VARCHAR(15)  NOT NULL UNIQUE
 );
 
--- Tables in the restaurant (so we can reference real tables)
+-- Tables in the restaurant 
 CREATE TABLE dining_tables (
   table_number INT PRIMARY KEY,
   seating_capacity INT NOT NULL CHECK (seating_capacity > 0)
@@ -42,7 +42,7 @@ CREATE TABLE menu_items (
   ingredients VARCHAR(255) NULL
 );
 
--- Delivery addresses (Task 5 upgraded)
+-- Delivery addresses 
 CREATE TABLE delivery_addresses (
   address_id INT AUTO_INCREMENT PRIMARY KEY,
   address VARCHAR(255) NOT NULL,
@@ -52,6 +52,18 @@ CREATE TABLE delivery_addresses (
   CONSTRAINT fk_delivery_customer
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
     ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+-- Audit table for deleted bookings
+CREATE TABLE booking_audit (
+    audit_id INT AUTO_INCREMENT PRIMARY KEY,
+    booking_id INT,
+    booking_date DATE,
+    booking_time TIME,
+    table_number INT,
+    number_of_guests INT,
+    customer_id INT,
+    deleted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Helpful indexes for performance

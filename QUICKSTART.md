@@ -50,6 +50,7 @@ Optional practice scripts:
 - `sql/04_structure_and_updates.sql`
 - `sql/05_subqueries_and_views.sql`
 - `sql/06_procedures_and_strings.sql`
+- `sql/07_functions_and_triggers.sql`
 
 ### 4. Start the API
 

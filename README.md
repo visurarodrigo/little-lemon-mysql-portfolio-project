@@ -40,6 +40,7 @@ sql/README.md        SQL script guide
 	- `bookings`
 	- `menu_items`
 	- `delivery_addresses`
+	- `booking_audit`
 
 ER diagram:
 
@@ -86,6 +87,7 @@ Optional advanced SQL scripts:
 - `sql/04_structure_and_updates.sql`
 - `sql/05_subqueries_and_views.sql`
 - `sql/06_procedures_and_strings.sql`
+- `sql/07_functions_and_triggers.sql`
 
 ### 4. Start the API
 
@@ -127,6 +129,8 @@ The SQL scripts include:
 - Data updates and schema changes
 - Subqueries and views
 - Stored procedures and string handling
+- User-defined functions
+- Triggers for audit and duplicate-booking prevention
 
 ## Business Problems
 

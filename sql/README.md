@@ -13,6 +13,7 @@ Run the files in this order:
 5. `04_structure_and_updates.sql` - Update and structure tasks
 6. `05_subqueries_and_views.sql` - Subqueries and views
 7. `06_procedures_and_strings.sql` - Stored procedures and string functions
+8. `07_functions_and_triggers.sql` - User-defined functions and triggers
 
 ## Notes
 
