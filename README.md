@@ -47,6 +47,10 @@ ER diagram:
 
 ![ER Diagram](ER%20Diagram.jpg)
 
+## Dashboard Preview
+
+![Little Lemon Dashboard UI](src/public/ui.png)
+
 ## Local Setup
 
 ### 1. Clone the repository
