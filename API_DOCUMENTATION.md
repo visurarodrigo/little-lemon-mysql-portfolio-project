@@ -12,6 +12,12 @@ The API is built with Node.js and Express. It connects to the local MySQL databa
 http://localhost:3001/api
 ```
 
+Dashboard URL:
+
+```text
+http://localhost:3001/
+```
+
 ## Running the API
 
 1. Make sure MySQL is running locally.
@@ -44,6 +50,7 @@ src/api/routes/
 - All requests and responses use JSON.
 - The API returns a 404 response for routes that do not exist.
 - Database errors are handled in the error middleware.
+- The dashboard UI can create customers, bookings, and menu items using these same endpoints.
 
 ## Resources
 
@@ -75,7 +82,7 @@ Content-Type: application/json
 
 {
   "full_name": "Nimal Perera",
-  "phone": "+94701234567"
+  "phone": "0712345678"
 }
 ```
 
@@ -87,7 +94,7 @@ Content-Type: application/json
 
 {
   "full_name": "Nimal Perera",
-  "phone": "+94709999999"
+  "phone": "0719999999"
 }
 ```
 
@@ -260,7 +267,7 @@ curl.exe http://localhost:3001/api/customers
 ### Add a customer
 
 ```powershell
-Invoke-WebRequest -Uri http://localhost:3001/api/customers -Method POST -ContentType "application/json" -Body '{"full_name":"Nimal Perera","phone":"+94701234567"}' -UseBasicParsing | Select-Object -ExpandProperty Content
+Invoke-WebRequest -Uri http://localhost:3001/api/customers -Method POST -ContentType "application/json" -Body '{"full_name":"Nimal Perera","phone":"0712345678"}' -UseBasicParsing | Select-Object -ExpandProperty Content
 ```
 
 ### List bookings

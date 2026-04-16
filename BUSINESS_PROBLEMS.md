@@ -34,7 +34,7 @@ This query groups bookings by date and counts them. It is useful for understandi
 
 ## 4. How do we update the price of a menu item?
 
-This task updates the cost of the `Kabasa` menu item and then checks the new value. It shows how menu prices can be maintained.
+This task updates the cost of the `Chicken Kottu` menu item and then checks the new value. It shows how menu prices can be maintained.
 
 **SQL file:** `sql/04_structure_and_updates.sql`
 

@@ -45,6 +45,12 @@ source sql/02_seed.sql;
 source sql/03_core_queries.sql;
 ```
 
+If `mysql` is not recognized in Windows PowerShell:
+
+```powershell
+& "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
+```
+
 Optional practice scripts:
 
 - `sql/04_structure_and_updates.sql`
@@ -60,6 +66,12 @@ npm run dev
 ```
 
 The API should run at `http://localhost:3001`.
+
+### 5. Open the dashboard
+
+- Dashboard: `http://localhost:3001/`
+- Health: `http://localhost:3001/health`
+- API base: `http://localhost:3001/api`
 
 ## Test the API
 
@@ -82,4 +94,4 @@ Press `Ctrl + C` in the terminal where the server is running.
 
 - `README.md`
 - `API_DOCUMENTATION.md`
-- `CONTRIBUTING.md`
+- `BUSINESS_PROBLEMS.md`

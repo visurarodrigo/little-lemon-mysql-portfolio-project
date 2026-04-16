@@ -20,3 +20,5 @@ Run the files in this order:
 - Run the scripts in sequence for the best result.
 - The later files depend on the database and tables created by the earlier files.
 - These scripts are meant to be run in MySQL Workbench or the MySQL command line.
+- `02_seed.sql` contains Sri Lanka-style sample customers, menu items, and addresses.
+- `03_core_queries.sql` also includes optional insert examples (`task 3A` and `task 3B`) for adding a customer and menu item.

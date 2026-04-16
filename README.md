@@ -7,6 +7,7 @@ Little Lemon is a restaurant management database project built with MySQL and ex
 - Normalized relational schema for core restaurant operations
 - SQL scripts for setup, schema creation, seed data, and query exercises
 - REST API for customers, bookings, and menu resources
+- Built-in web dashboard for viewing and creating data
 - Local environment configuration via `.env`
 
 ## Technology Stack
@@ -20,13 +21,13 @@ Little Lemon is a restaurant management database project built with MySQL and ex
 
 ```text
 src/                 API source code
+src/public/          Static dashboard UI (served by Express)
 sql/                 SQL scripts (execute in sequence)
 outputs/             Query result screenshots
 BUSINESS_PROBLEMS.md  SQL tasks mapped to business questions
 README.md            Project overview and setup
 QUICKSTART.md        Fast start instructions
 API_DOCUMENTATION.md API endpoint details
-CONTRIBUTING.md      Contribution guidelines
 src/README.md        Source code notes
 sql/README.md        SQL script guide
 ```
@@ -82,6 +83,12 @@ source sql/02_seed.sql;
 source sql/03_core_queries.sql;
 ```
 
+Windows PowerShell tip (if `mysql` command is not recognized):
+
+```powershell
+& "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
+```
+
 Optional advanced SQL scripts:
 
 - `sql/04_structure_and_updates.sql`
@@ -89,12 +96,18 @@ Optional advanced SQL scripts:
 - `sql/06_procedures_and_strings.sql`
 - `sql/07_functions_and_triggers.sql`
 
-### 4. Start the API
+### 4. Start the API and Dashboard
 
 ```bash
 npm install
 npm run dev
 ```
+
+Open in browser:
+
+- Dashboard: `http://localhost:3001/`
+- Health: `http://localhost:3001/health`
+- API base: `http://localhost:3001/api`
 
 ## API Access
 
@@ -147,7 +160,15 @@ Query output screenshots are available in `outputs/`.
 - [BUSINESS_PROBLEMS.md](BUSINESS_PROBLEMS.md)
 - [src/README.md](src/README.md)
 - [sql/README.md](sql/README.md)
-- [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## Troubleshooting
+
+- `mysql` not recognized in PowerShell:
+	- Use the full executable path shown above, or add MySQL `bin` to your PATH.
+- API fails on startup with MySQL connection error:
+	- Ensure MySQL server is running and `.env` credentials match your local setup.
+- Duplicate booking error while creating a booking:
+	- The database trigger blocks duplicate date/time/table slots and returns HTTP `409`.
 
 ## License
 
